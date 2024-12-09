@@ -59,7 +59,7 @@ The CNN model achieved the following performance metrics:
 3. View the prediction result (Normal or Pneumonia).
 
 ## Images
-
+![Normal Image](Sample images/Normal.jpeg)
 
 
 
