@@ -60,9 +60,8 @@ The CNN model achieved the following performance metrics:
 
 ## Images
 
-
-
-
+1. Normal healthy lung X-ray. <br> <img src="Sample images/Normal.jpeg" width="350" title="Normal healthy lung X-ray"/> <br> <br>
+2. Pneumonia X-ray. <br> <img src="Sample images/Pneumonia.jpeg" width="350" title="Pneumonia X-ray"/>
 
 ## Future Enhancements
 - Improve model accuracy by experimenting with advanced architectures.
