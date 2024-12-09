@@ -32,21 +32,29 @@ def predict():
         img = Image.open(file.stream)
 
         # Preprocess the image for the model (resizing and normalizing)
-        img = img.resize((28, 28))  # Resize according to the model's expected input size
-        img = np.array(img.convert('L'))  # Convert to grayscale (if needed)
-        img = img.astype('float32') / 255.0  # Normalize the image
+        img = img.resize((64, 64))  # Resize according to the model's expected input size
+        img = np.array(img)  # Convert to a NumPy array
+        
+        # Ensure the image has 3 channels (RGB)
+        if img.ndim == 2:  # If the image is grayscale
+            img = np.expand_dims(img, axis=-1)  # Add channel dimension (64, 64, 1)
+            img = np.repeat(img, 3, axis=-1)  # Convert grayscale to RGB (64, 64, 3)
+
+        # Normalize the image
+        img = img.astype('float32') / 255.0
 
         # Add batch dimension (model expects batch dimension)
-        img = np.expand_dims(img, axis=0)
+        img = np.expand_dims(img, axis=0)  # Add batch dimension (1, 64, 64, 3)
 
         # Make prediction
         prediction = model.predict(img)
 
         # Return prediction as JSON response
-        return jsonify({"prediction": prediction.tolist()})
+        return jsonify({"prediction percent for pneumonia": (prediction[0]*100).tolist()})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
 
 if __name__ == '__main__':
     app.run(debug=True)
