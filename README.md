@@ -8,7 +8,9 @@ This project aims to detect pneumonia from chest X-ray images using a convolutio
 - [Model Performance](#model-performance)
 - [Setup Instructions](#setup-instructions)
 - [Usage](#usage)
+- [images](#images)
 - [Future Enhancements](#future-enhancements)
+  
 
 ## Project Overview
 This project leverages deep learning techniques to classify chest X-ray images into two categories:
@@ -55,6 +57,14 @@ The CNN model achieved the following performance metrics:
 1. Launch the Flask web application.
 2. Upload a chest X-ray image using the interface.
 3. View the prediction result (Normal or Pneumonia).
+
+## Images
+1.[Screenshot 2024-12-09 142404](https://github.com/user-attachments/assets/1a2039e0-dba6-413f-aa65-622a195ce359)
+2.[Screenshot 2024-12-09 143036](https://github.com/user-attachments/assets/d5deab97-ec03-4ea3-8358-9f44fad68dc3)
+
+
+
+
 
 ## Future Enhancements
 - Improve model accuracy by experimenting with advanced architectures.
