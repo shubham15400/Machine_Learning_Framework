@@ -42,7 +42,7 @@ The CNN model achieved the following performance metrics:
 3. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia).
 4. Train the model (if required):
    ```bash
-   python train_model.py
+   python Project.ipynb
    ```
    The pre-trained model is included in the repository for convenience.
 5. Run the Flask application:
