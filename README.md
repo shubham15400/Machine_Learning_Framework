@@ -34,8 +34,8 @@ The CNN model achieved the following performance metrics:
 ## Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone <repository_url>
-   cd <repository_name>
+   git clone "https://github.com/shubham15400/Machine_Learning_Framework/"
+   cd Machine_Learning_Framework
    ```
 2. Install the required dependencies:
    ```bash
