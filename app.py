@@ -49,8 +49,21 @@ def predict():
         # Make prediction
         prediction = model.predict(img)
 
-        # Return prediction as JSON response
-        return jsonify({"prediction percent for pneumonia": (prediction[0]*100).tolist()})
+        pred_val = float(prediction[0]*100)
+
+        print(pred_val)
+
+        if (pred_val) > 90:
+            # Return prediction as JSON response
+            return jsonify({f"The patient has {pred_val:.3f}% chance of Pneumonia": "Therefore is Pneumonia positive"})
+        
+        elif (pred_val) < 20:
+            # Return prediction as JSON response
+            return jsonify({f"The patient has {pred_val:.3f}% chance of Pneumonia": "Therefore has healthy lungs"})
+        
+        else:
+            # Return prediction as JSON response
+            return jsonify({f"The patient has {pred_val:.3f}% chance of Pneumonia": "Therefore the patient needs further tests to be sure."})
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
