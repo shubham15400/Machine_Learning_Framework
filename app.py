@@ -1,11 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from tensorflow.keras.models import load_model
 from PIL import Image
 import numpy as np
 import io
+from flask_cors import CORS
 
-# Initialize Flask app
 app = Flask(__name__)
+CORS(app)
+
+
+# # Initialize Flask app
+# app = Flask(__name__)
 
 # Load the trained model
 model = load_model('cnn.h5')
@@ -13,7 +18,8 @@ model = load_model('cnn.h5')
 # Route for the home page
 @app.route('/')
 def home():
-    return "Welcome to the Model Prediction API! Use the /predict endpoint to make predictions."
+    return render_template('index.html')
+    # return "Welcome to the Model Prediction API! Use the /predict endpoint to make predictions."
 
 # Route for making predictions
 @app.route('/predict', methods=['POST'])
