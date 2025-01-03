@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background-image: url('background.jpeg'); /* Replace with your image URL or path */
+            background-size: cover; /* Ensures the image covers the entire body */
+            background-repeat: no-repeat; /* Prevents tiling */
+            background-position: center; /* Centers the image */
+            background-attachment: fixed; /* Makes the background stay fixed when scrolling */
+        }
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            width: 300px;
+            text-align: center;
+            background-color: rgba(249, 249, 249, 0.8); /* Semi-transparent for better readability */
+            border-radius: 8px; /* Rounded corners */
+        }
+        h1, p {
+            color: #333; /* Adjust color for better contrast */
+        }
+    </style>
+</head>
+<body>
+    <h1>Pneumonia Detection</h1>
+    <p>Select an image to check for pneumonia.</p>
+    <input type="file" id="imageInput" accept="image/*">
+    <button onclick="uploadImage()">Upload and Predict</button>
+    <div id="result"></div>
+
+    <script>
+        async function uploadImage() {
+        const fileInput = document.getElementById('imageInput');
+        const file = fileInput.files[0];
+        const resultDiv = document.getElementById('result');
+
+        if (!file) {
+            alert('Please select an image to upload.');
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const response = await fetch('http://localhost:5000/predict', {
+                method: 'POST',
+                body: formData,
+            });
+
+            console.log('Response:', response);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            displayResult(result);
+        } catch (error) {
+            console.error('Fetch error:', error);
+            resultDiv.textContent = 'Error: ' + error.message;
+        }
+    }
+
+
+        function displayResult(result) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = JSON.stringify(result, null, 2);
+        }
+    </script>
+</body>
+</html>
