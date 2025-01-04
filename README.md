@@ -23,6 +23,7 @@ A Flask web application is used to deploy the trained model, enabling users to u
 - Python
 - TensorFlow/Keras for CNN model development
 - Flask for web application deployment
+- HTML and CSS for web page development
 - Dataset: [Chest X-Ray Images (Pneumonia)](https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia)
 
 ## Model Performance
